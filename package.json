@@ -1,0 +1,29 @@
+{
+  "name": "forgotten-realms-mud",
+  "version": "0.1.0",
+  "description": "Forgotten Realms MUD Node.js Facebook Messenger app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "5.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artyomtrityak/forgotten-realms-mud.git"
+  },
+  "keywords": [
+    "node.js",
+    "mud"
+  ],
+  "author": "Artyom Trityak <art.trityak@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/artyomtrityak/forgotten-realms-mud/issues"
+  },
+  "homepage": "https://github.com/artyomtrityak/forgotten-realms-mud#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
