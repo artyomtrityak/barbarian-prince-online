@@ -15,7 +15,9 @@ app.set('port', (process.env.PORT || 5000));
 
 
 
-var token = "";
+var token = process.env.FB_ACCESS_TOKEN;
+
+console.log(token);
 
 function sendTextMessage(sender, text) {
   messageData = {
