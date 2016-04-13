@@ -4,12 +4,40 @@ var bodyParser = require('body-parser')
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-
 // parse application/json
 app.use(bodyParser.json());
 
 
 app.set('port', (process.env.PORT || 5000));
+
+
+
+
+
+var token = "CAAB9HZBnM3EUBAKpW2kIFPDJMqR7ZBq4KyXWORVkBIxUPE7YIcZB7AatnYyYpYNr733ue2eE0RYT6cL0IxeDZAi6SIZBCfFoUPCCZCVYZCzp1ELdHk7geHtKtWELCjU0esuqAzZCgRTJZAHRiHz8SA99ZBPhlvwCHOdN24oT4zZAL2R4EJAV5tB9skrfISDLFet220fPiFZAnwZB8qQZDZD";
+
+function sendTextMessage(sender, text) {
+  messageData = {
+    text:text
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
+
+
 
 
 app.get('/', function(request, response) {
@@ -27,16 +55,14 @@ app.get('/webhook/', function (req, res) {
 
 
 app.post('/webhook/', function (req, res) {
-  console.log('ZZZ:', req.body);
-
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
     if (event.message && event.message.text) {
-      // Handle a text message from this sender
       text = event.message.text;
-      console.log('TEXT:', text);
+      // Handle a text message from this sender
+      sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
     }
   }
   res.sendStatus(200);
