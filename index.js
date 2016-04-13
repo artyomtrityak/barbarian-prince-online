@@ -15,7 +15,7 @@ app.set('port', (process.env.PORT || 5000));
 
 
 
-var token = "CAAB9HZBnM3EUBAKpW2kIFPDJMqR7ZBq4KyXWORVkBIxUPE7YIcZB7AatnYyYpYNr733ue2eE0RYT6cL0IxeDZAi6SIZBCfFoUPCCZCVYZCzp1ELdHk7geHtKtWELCjU0esuqAzZCgRTJZAHRiHz8SA99ZBPhlvwCHOdN24oT4zZAL2R4EJAV5tB9skrfISDLFet220fPiFZAnwZB8qQZDZD";
+var token = "";
 
 function sendTextMessage(sender, text) {
   messageData = {
