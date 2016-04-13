@@ -19,7 +19,7 @@ app.get('/webhook/', function (req, res) {
 
 
 app.post('/webhook/', function (req, res) {
-  console.log('ZZZ:', req.body);
+  console.log('ZZZ:', req, req.body);
 
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
